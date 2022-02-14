@@ -4,8 +4,10 @@
  */
 package main.frames;
 
+import java.util.ArrayList;
 import main.util.FileManager;
 import main.util.LexicalAnalysis;
+import main.util.SymbolTable;
 
 /**
  *
@@ -83,6 +85,9 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane2.setViewportView(null);
+
+        jTextPane_editor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(jTextPane_editor);
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -342,6 +347,36 @@ public class Home extends javax.swing.JFrame {
         jTextField_Spaces.setText(String.valueOf(lexicalAnalysis.getSpacesCount()));  
         jTextField_characters.setText(String.valueOf(lexicalAnalysis.getCharactersCount()));
         
+        jComboBox1.removeAllItems();
+        ArrayList letters = lexicalAnalysis.getLetters();
+        for (int i = 0; i < letters.size(); i++){
+            jComboBox1.addItem(letters.get(i).toString());
+        }
+        
+        jComboBox2.removeAllItems();
+        ArrayList numbers = lexicalAnalysis.getNumbers();
+        for (int i = 0; i < numbers.size(); i++){
+            jComboBox2.addItem(numbers.get(i).toString());
+        }
+        
+        jComboBox3.removeAllItems();
+        ArrayList operators = lexicalAnalysis.getOperators();
+        for (int i = 0; i < operators.size(); i++){
+            jComboBox3.addItem(operators.get(i).toString());
+        }
+        
+        jComboBox4.removeAllItems();
+        ArrayList specials = lexicalAnalysis.getSpecials();
+        for (int i = 0; i < specials.size(); i++){
+            jComboBox4.addItem(specials.get(i).toString());
+        }
+        
+        jComboBox5.removeAllItems();
+        ArrayList unknows = lexicalAnalysis.getUnknows();
+        for (int i = 0; i < unknows.size(); i++){
+            jComboBox5.addItem(unknows.get(i).toString());
+        }
+                
         jTextPane_CleanCode.setText(lexicalAnalysis.getCleanCode());
     }//GEN-LAST:event_jMenuItem_LexicoActionPerformed
 
@@ -386,6 +421,7 @@ public class Home extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Home().setVisible(true);
+                SymbolTable.createHash();
             }
         });
     }
