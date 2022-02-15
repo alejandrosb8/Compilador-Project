@@ -60,7 +60,7 @@ public class Home extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        jTextPane_comments = new javax.swing.JTextPane();
         jSeparator6 = new javax.swing.JSeparator();
         jComboBox5 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -84,8 +84,6 @@ public class Home extends javax.swing.JFrame {
         jTabbedPane1.setToolTipText("");
 
         jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jScrollPane2.setViewportView(null);
 
         jTextPane_editor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(jTextPane_editor);
@@ -198,8 +196,8 @@ public class Home extends javax.swing.JFrame {
 
         jLabel7.setText("Comentarios");
 
-        jTextPane3.setEditable(false);
-        jScrollPane3.setViewportView(jTextPane3);
+        jTextPane_comments.setEditable(false);
+        jScrollPane3.setViewportView(jTextPane_comments);
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -343,41 +341,42 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem_LexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_LexicoActionPerformed
         LexicalAnalysis lexicalAnalysis = new LexicalAnalysis(jTextPane_editor.getText());
-        
-        jTextField_Spaces.setText(String.valueOf(lexicalAnalysis.getSpacesCount()));  
+
+        jTextField_Spaces.setText(String.valueOf(lexicalAnalysis.getSpacesCount()));
         jTextField_characters.setText(String.valueOf(lexicalAnalysis.getCharactersCount()));
-        
+
         jComboBox1.removeAllItems();
         ArrayList letters = lexicalAnalysis.getLetters();
-        for (int i = 0; i < letters.size(); i++){
+        for (int i = 0; i < letters.size(); i++) {
             jComboBox1.addItem(letters.get(i).toString());
         }
-        
+
         jComboBox2.removeAllItems();
         ArrayList numbers = lexicalAnalysis.getNumbers();
-        for (int i = 0; i < numbers.size(); i++){
+        for (int i = 0; i < numbers.size(); i++) {
             jComboBox2.addItem(numbers.get(i).toString());
         }
-        
+
         jComboBox3.removeAllItems();
         ArrayList operators = lexicalAnalysis.getOperators();
-        for (int i = 0; i < operators.size(); i++){
+        for (int i = 0; i < operators.size(); i++) {
             jComboBox3.addItem(operators.get(i).toString());
         }
-        
+
         jComboBox4.removeAllItems();
         ArrayList specials = lexicalAnalysis.getSpecials();
-        for (int i = 0; i < specials.size(); i++){
+        for (int i = 0; i < specials.size(); i++) {
             jComboBox4.addItem(specials.get(i).toString());
         }
-        
+
         jComboBox5.removeAllItems();
         ArrayList unknows = lexicalAnalysis.getUnknows();
-        for (int i = 0; i < unknows.size(); i++){
+        for (int i = 0; i < unknows.size(); i++) {
             jComboBox5.addItem(unknows.get(i).toString());
         }
-                
+
         jTextPane_CleanCode.setText(lexicalAnalysis.getCleanCode());
+        jTextPane_comments.setText(lexicalAnalysis.getComments());
     }//GEN-LAST:event_jMenuItem_LexicoActionPerformed
 
     private void jMenuItem_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_openActionPerformed
@@ -469,8 +468,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField_Spaces;
     private javax.swing.JTextField jTextField_characters;
-    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane_CleanCode;
+    private javax.swing.JTextPane jTextPane_comments;
     private javax.swing.JTextPane jTextPane_editor;
     // End of variables declaration//GEN-END:variables
 }

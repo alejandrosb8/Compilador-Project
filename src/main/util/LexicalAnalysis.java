@@ -40,94 +40,140 @@ public class LexicalAnalysis {
         }
         return count;
     }
-    
+
     // Combobox letras
-    public ArrayList getLetters(){
+    public ArrayList getLetters() {
         ArrayList letters = new ArrayList();
         String cleanCode = getCleanCode();
-        
-        if (SymbolTable.st.isEmpty() == false){
+
+        if (SymbolTable.st.isEmpty() == false) {
             for (int i = 0; i < cleanCode.length(); i++) {
-                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "letra" && letters.contains(cleanCode.charAt(i)) == false){                              
-                    letters.add(cleanCode.charAt(i));         
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "letra" && letters.contains(cleanCode.charAt(i)) == false) {
+                    letters.add(cleanCode.charAt(i));
                 }
             }
         }
-        
+
         return letters;
     }
-    
-     // Combobox numeros
-    public ArrayList getNumbers(){
+
+    // Combobox numeros
+    public ArrayList getNumbers() {
         ArrayList numbers = new ArrayList();
         String cleanCode = getCleanCode();
-        
-        if (SymbolTable.st.isEmpty() == false){
+
+        if (SymbolTable.st.isEmpty() == false) {
             for (int i = 0; i < cleanCode.length(); i++) {
-                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "numero" && numbers.contains(cleanCode.charAt(i)) == false){                              
-                    numbers.add(cleanCode.charAt(i));         
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "numero" && numbers.contains(cleanCode.charAt(i)) == false) {
+                    numbers.add(cleanCode.charAt(i));
                 }
             }
         }
-        
+
         return numbers;
     }
-    
+
     // Combobox operadores
-    public ArrayList getOperators(){
+    public ArrayList getOperators() {
         ArrayList operators = new ArrayList();
         String cleanCode = getCleanCode();
-        
-        if (SymbolTable.st.isEmpty() == false){
+
+        if (SymbolTable.st.isEmpty() == false) {
             for (int i = 0; i < cleanCode.length(); i++) {
-                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "operador" && operators.contains(cleanCode.charAt(i)) == false){                              
-                    operators.add(cleanCode.charAt(i));         
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "operador" && operators.contains(cleanCode.charAt(i)) == false) {
+                    operators.add(cleanCode.charAt(i));
                 }
             }
         }
-        
+
         return operators;
     }
-    
+
     // Combobox operadores
-    public ArrayList getSpecials(){
+    public ArrayList getSpecials() {
         ArrayList specials = new ArrayList();
         String cleanCode = getCleanCode();
-        
-        if (SymbolTable.st.isEmpty() == false){
+
+        if (SymbolTable.st.isEmpty() == false) {
             for (int i = 0; i < cleanCode.length(); i++) {
-                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "especial" && specials.contains(cleanCode.charAt(i)) == false){                              
-                    specials.add(cleanCode.charAt(i));         
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "especial" && specials.contains(cleanCode.charAt(i)) == false) {
+                    specials.add(cleanCode.charAt(i));
                 }
             }
         }
-        
+
         return specials;
     }
-    
+
     // Combobox invalidos
-    public ArrayList getUnknows(){
+    public ArrayList getUnknows() {
         ArrayList unknows = new ArrayList();
         String cleanCode = getCleanCode();
-        
-        if (SymbolTable.st.isEmpty() == false){
+
+        if (SymbolTable.st.isEmpty() == false) {
             for (int i = 0; i < cleanCode.length(); i++) {
-                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) == false && unknows.contains(cleanCode.charAt(i)) == false){                              
-                    unknows.add(cleanCode.charAt(i));         
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) == false && unknows.contains(cleanCode.charAt(i)) == false) {
+                    unknows.add(cleanCode.charAt(i));
                 }
             }
         }
-        
+
         return unknows;
+    }
+
+    // Obtener comentarios
+    public String getComments() {
+        String comments = "";
+
+        boolean isComment;
+        for (int i = 0; i < (code.length() - 2); i++) {
+            isComment = code.substring(i, i + 2).equals("/*");
+            
+            while (isComment) {
+                comments += code.charAt(i);
+                if (code.substring(i, i + 2).equals("*/")) {
+                    comments += code.charAt(i + 1) + "\n";
+                    break;
+                }
+                i++;
+            }
+        }
+
+        return comments;
+    }
+
+    // Limpiar Comentarios
+    private String cleanComments() {
+        String comments = "";
+        String cleanCode = code;
+        
+        boolean isComment;
+        for (int i = 0; i < (code.length() - 2); i++) {
+            isComment = code.substring(i, i + 2).equals("/*");
+
+            while (isComment) {
+                comments += code.charAt(i);
+                if (code.substring(i, i + 2).equals("*/")) {
+                    comments += code.charAt(i + 1);
+                    cleanCode = cleanCode.replace(comments, "");
+                    comments="";
+                    break;
+                }
+                i++;
+            }
+        }
+
+        return cleanCode;
     }
 
     // Limpiar el Codigo
     public String getCleanCode() {
         String cleanCode = "";
-
-        for (int i = 0; i < code.length(); i++) {
-            if (code.charAt(i) != ' ') {
-                cleanCode += code.charAt(i);
+        String code_ = cleanComments().replaceAll("\n", "");
+        
+        for (int i = 0; i < code_.length(); i++) {
+            if (code_.charAt(i) != ' ') {
+                cleanCode += code_.charAt(i);
             }
         }
 
