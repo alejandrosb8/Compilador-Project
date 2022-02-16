@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import main.util.FileManager;
 import main.util.LexicalAnalysis;
 import main.util.SymbolTable;
+import main.util.TypingUtilities;
 
 /**
  *
@@ -18,6 +19,9 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    
+    String lastLetter = null;
+    
     public Home() {
         initComponents();
     }
@@ -86,6 +90,14 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jTextPane_editor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextPane_editor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextPane_editorKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPane_editorKeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextPane_editor);
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -388,6 +400,19 @@ public class Home extends javax.swing.JFrame {
         FileManager fileManager = new FileManager();
         fileManager.SaveFile(this, jTextPane_editor.getText());
     }//GEN-LAST:event_jMenuItem_saveActionPerformed
+
+    private void jTextPane_editorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane_editorKeyTyped
+       lastLetter = TypingUtilities.printCuople(evt.getKeyChar());     
+    }//GEN-LAST:event_jTextPane_editorKeyTyped
+
+    private void jTextPane_editorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane_editorKeyReleased
+       if (lastLetter != null) {
+           int caretPosition = jTextPane_editor.getCaretPosition();
+           jTextPane_editor.setText(TypingUtilities.finalText(jTextPane_editor.getText(), lastLetter, caretPosition));
+           lastLetter = null;
+           jTextPane_editor.setCaretPosition(caretPosition);
+       }
+    }//GEN-LAST:event_jTextPane_editorKeyReleased
 
     /**
      * @param args the command line arguments

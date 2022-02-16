@@ -89,7 +89,7 @@ public class LexicalAnalysis {
         return operators;
     }
 
-    // Combobox operadores
+    // Combobox caracteres especiales
     public ArrayList getSpecials() {
         ArrayList specials = new ArrayList();
         String cleanCode = getCleanCode();
