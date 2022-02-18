@@ -4,6 +4,7 @@
  */
 package main.frames;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import main.util.FileManager;
 import main.util.LexicalAnalysis;
@@ -19,9 +20,11 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    
     String lastLetter = null;
-    
+
+    String styleFont = "Segoe UI";
+    int sizeFont = 14;
+
     public Home() {
         initComponents();
     }
@@ -77,6 +80,18 @@ public class Home extends javax.swing.JFrame {
         jMenuItem_Lexico = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -284,6 +299,11 @@ public class Home extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Nuevo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem_open.setText("Abrir");
@@ -322,6 +342,84 @@ public class Home extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Opciones");
+
+        jMenu6.setText("Tamaño de Fuente");
+
+        jMenuItem9.setText("10");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                size10_ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem9);
+
+        jMenuItem10.setText("12");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                size12_ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem10);
+
+        jMenuItem11.setText("14");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                size14_ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem11);
+
+        jMenuItem12.setText("18");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                size18_ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem12);
+
+        jMenu5.add(jMenu6);
+
+        jMenu7.setText("Estilo de Fuente");
+
+        jMenuItem13.setText("Arial");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                styleArial_ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem13);
+
+        jMenuItem14.setText("Calibri");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                styleCalibriActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem14);
+
+        jMenuItem15.setText("Segoe UI");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                styleSegoeUI_ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem15);
+
+        jMenu5.add(jMenu7);
+        jMenu5.add(jSeparator2);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Autocierre de Separadores");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jCheckBoxMenuItem1);
+
+        jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Extra");
 
@@ -402,17 +500,67 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_saveActionPerformed
 
     private void jTextPane_editorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane_editorKeyTyped
-       lastLetter = TypingUtilities.printCuople(evt.getKeyChar());     
+        lastLetter = TypingUtilities.printCuople(evt.getKeyChar());
     }//GEN-LAST:event_jTextPane_editorKeyTyped
 
     private void jTextPane_editorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane_editorKeyReleased
-       if (lastLetter != null) {
-           int caretPosition = jTextPane_editor.getCaretPosition();
-           jTextPane_editor.setText(TypingUtilities.finalText(jTextPane_editor.getText(), lastLetter, caretPosition));
-           lastLetter = null;
-           jTextPane_editor.setCaretPosition(caretPosition);
-       }
+        if (lastLetter != null) {
+            int caretPosition = jTextPane_editor.getCaretPosition();
+            jTextPane_editor.setText(TypingUtilities.finalText(jTextPane_editor.getText(), lastLetter, caretPosition));
+            lastLetter = null;
+            jTextPane_editor.setCaretPosition(caretPosition);
+        }
     }//GEN-LAST:event_jTextPane_editorKeyReleased
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void size10_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size10_ActionPerformed
+        sizeFont = 10;
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_size10_ActionPerformed
+
+    private void size12_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size12_ActionPerformed
+        sizeFont = 12;
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_size12_ActionPerformed
+
+    private void size14_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size14_ActionPerformed
+        sizeFont = 14;
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_size14_ActionPerformed
+
+    private void size18_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_size18_ActionPerformed
+        sizeFont = 18;
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_size18_ActionPerformed
+
+    private void styleArial_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_styleArial_ActionPerformed
+        styleFont = "Arial";
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_styleArial_ActionPerformed
+
+    private void styleCalibriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_styleCalibriActionPerformed
+        styleFont = "Calibri";
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_styleCalibriActionPerformed
+
+    private void styleSegoeUI_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_styleSegoeUI_ActionPerformed
+        styleFont = "Segoe UI";
+        Font font = new Font(styleFont, Font.PLAIN, sizeFont);
+        jTextPane_editor.setFont(font);
+    }//GEN-LAST:event_styleSegoeUI_ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        jTextPane_editor.setText("");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,6 +599,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -471,11 +620,21 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItem_Lexico;
     private javax.swing.JMenuItem jMenuItem_open;
     private javax.swing.JMenuItem jMenuItem_save;
@@ -486,6 +645,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane1;

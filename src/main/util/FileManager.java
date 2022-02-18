@@ -7,11 +7,13 @@ package main.util;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -22,7 +24,9 @@ public class FileManager {
     // Abrir un Archivo
     public String OpenFile(JFrame home) {
         try {
-            JFileChooser file = new JFileChooser();
+            JFileChooser file = new JFileChooser(".");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archiovs TXT", "txt");
+            file.setFileFilter(filtro);
             file.showOpenDialog(home);
             File open = file.getSelectedFile();
 
@@ -46,14 +50,24 @@ public class FileManager {
     // Guardar un Archivo
     public void SaveFile(JFrame home, String code) {
         try {
-            JFileChooser file = new JFileChooser();
+            JFileChooser file = new JFileChooser(".");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archiovs TXT", "txt");
+            file.setFileFilter(filtro);
             file.showSaveDialog(home);
             File save = file.getSelectedFile();
 
             if (save != null) {
-                FileWriter fw = new FileWriter(save + ".txt");
-                fw.write(code);
-                fw.close();
+                String name = save.getName();
+                if (name.length() > 4 && name.substring(name.length() - 4, name.length()).equals(".txt")) {
+                    FileWriter fw = new FileWriter(save);
+                    fw.write(code);
+                    fw.close();
+                } else {
+                    FileWriter fw = new FileWriter(save + ".txt");
+                    fw.write(code);
+                    fw.close();
+                }
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al intentar guardar el archivo.");
