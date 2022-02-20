@@ -504,7 +504,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextPane_editorKeyTyped
 
     private void jTextPane_editorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane_editorKeyReleased
-        if (lastLetter != null) {
+        if (lastLetter != null && jCheckBoxMenuItem1.isSelected()) {
             int caretPosition = jTextPane_editor.getCaretPosition();
             jTextPane_editor.setText(TypingUtilities.finalText(jTextPane_editor.getText(), lastLetter, caretPosition));
             lastLetter = null;
