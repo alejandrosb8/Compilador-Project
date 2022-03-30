@@ -491,7 +491,10 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_openActionPerformed
         FileManager fileManager = new FileManager();
-        jTextPane_editor.setText(fileManager.OpenFile(this));
+        String newText = fileManager.OpenFile(this);
+        if (!newText.equals("")) {
+            jTextPane_editor.setText(newText);
+        }
     }//GEN-LAST:event_jMenuItem_openActionPerformed
 
     private void jMenuItem_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_saveActionPerformed

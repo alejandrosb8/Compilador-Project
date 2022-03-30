@@ -34,8 +34,13 @@ public class FileManager {
             if (open != null) {
                 FileReader fr = new FileReader(open);
                 BufferedReader br = new BufferedReader(fr);
-                while ((aux = br.readLine()) != null) {
+                aux = br.readLine();
+                while (aux != null) {
                     text += aux;
+                    aux = br.readLine();
+                    if(aux != null) {
+                        text += "\n";
+                    }
                 }
                 fr.close();
                 br.close();
