@@ -496,7 +496,7 @@ public class Home extends javax.swing.JFrame {
         for (int i = 0; i < unknows.size(); i++) {
             jComboBox5.addItem(unknows.get(i).toString());
         }
-
+        // para commit
         jTextPane_CleanCode.setText(lexicalAnalysis.getCleanCode());
         jTextPane_comments.setText(lexicalAnalysis.getComments());
     }//GEN-LAST:event_jMenuItem_LexicoActionPerformed
