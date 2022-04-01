@@ -3,30 +3,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package main.frames;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JTable;
 import main.util.SymbolTable;
 
 /**
  *
  * @author aleja
  */
+
 public class SymbolTableForm extends javax.swing.JFrame {
 
     /**
      * Creates new form SymbolTableForm
      */
+    
+    JTable j;
+    
     public SymbolTableForm() {
         initComponents();
         
         String[] columnNames = {"Caracter", "Tipo"};
         int rows = SymbolTable.getTable().size();
+        Map<Character, String> Stable = SymbolTable.getTable();
         
-        String data[][];
-        data = new String[2][rows];
+        int[][] data = new int[2][rows];
         
-        for (int i = 0; i < rows; i++){
-            
+        int i = 0;
+        for (Map.Entry<Character, String> pair : Stable.entrySet()) {
+             data[0][i] = 'a';
+             data[1][i] = 'b';
+             i++;
         }
+        
+         //j = new JTable(Arrays.deepToString(data), columnNames);
+        
+        System.out.println(Arrays.deepToString(data));
+        //jTable1.setModel(new DefaultTableModel(columnNames, data));
         
     }
 
@@ -39,19 +56,17 @@ public class SymbolTableForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+            .addGap(0, 330, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
         );
 
         pack();
@@ -93,6 +108,5 @@ public class SymbolTableForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration                   
 }
