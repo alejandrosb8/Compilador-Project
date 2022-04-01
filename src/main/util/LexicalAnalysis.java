@@ -215,6 +215,6 @@ public class LexicalAnalysis {
             }
         }
 
-        return cleanCode.replaceAll("\n","");
+        return cleanCode;
     }
 }
