@@ -103,4 +103,8 @@ public class SymbolTable {
             HashMap<Character, String> table = st;
             return table;
         }
+        public static int getTableSize(){
+            int size = st.size();
+            return size;
+        }
 }
