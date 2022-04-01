@@ -98,4 +98,9 @@ public class SymbolTable {
                 st.put('|', caracteresEspeciales);
             }
         }
+        
+        public static HashMap<Character, String> getTable(){
+            HashMap<Character, String> table = st;
+            return table;
+        }
 }
