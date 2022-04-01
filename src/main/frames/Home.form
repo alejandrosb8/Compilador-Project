@@ -363,7 +363,7 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jTextField3" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="jTextField_lineJump" min="-2" pref="30" max="-2" attributes="0"/>
                                               <Component id="jTextField_characters" min="-2" pref="30" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -375,7 +375,7 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField2" min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="jTextField_tabulators" min="-2" pref="30" max="-2" attributes="0"/>
                                               <Component id="jTextField_Spaces" min="-2" pref="30" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -397,12 +397,12 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" max="-2" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jTextField_tabulators" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_lineJump" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -435,6 +435,9 @@
                     <Component class="javax.swing.JTextPane" name="jTextPane_CleanCode">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[10, 24]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -450,7 +453,7 @@
                     <Property name="text" type="java.lang.String" value="Tabuladores"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="jTextField_tabulators">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="0"/>
@@ -461,7 +464,7 @@
                     <Property name="text" type="java.lang.String" value="Saltos de Linea"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="jTextField_lineJump">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="0"/>

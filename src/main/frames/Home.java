@@ -49,9 +49,9 @@ public class Home extends javax.swing.JFrame {
         jTextPane_CleanCode = new javax.swing.JTextPane();
         jTextField_Spaces = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField_tabulators = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField_lineJump = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField_characters = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
@@ -126,6 +126,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("Espacios en Blanco");
 
         jTextPane_CleanCode.setEditable(false);
+        jTextPane_CleanCode.setMaximumSize(new java.awt.Dimension(10, 24));
         jScrollPane1.setViewportView(jTextPane_CleanCode);
 
         jTextField_Spaces.setEditable(false);
@@ -133,13 +134,13 @@ public class Home extends javax.swing.JFrame {
 
         jLabel6.setText("Tabuladores");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("0");
+        jTextField_tabulators.setEditable(false);
+        jTextField_tabulators.setText("0");
 
         jLabel9.setText("Saltos de Linea");
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("0");
+        jTextField_lineJump.setEditable(false);
+        jTextField_lineJump.setText("0");
 
         jLabel10.setText("Caracteres");
 
@@ -165,7 +166,7 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(36, 36, 36)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_lineJump, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField_characters, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel11)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -174,7 +175,7 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_tabulators, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField_Spaces, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 254, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -188,11 +189,11 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2))
+                    .addComponent(jTextField_tabulators))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_lineJump, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,8 +466,10 @@ public class Home extends javax.swing.JFrame {
         LexicalAnalysis lexicalAnalysis = new LexicalAnalysis(jTextPane_editor.getText());
 
         jTextField_Spaces.setText(String.valueOf(lexicalAnalysis.getSpacesCount()));
+        jTextField_tabulators.setText(String.valueOf(lexicalAnalysis.getTabulatorsCount()));
+        jTextField_lineJump.setText(String.valueOf(lexicalAnalysis.getLineJumpCount()));
         jTextField_characters.setText(String.valueOf(lexicalAnalysis.getCharactersCount()));
-
+        
         jComboBox1.removeAllItems();
         ArrayList letters = lexicalAnalysis.getLetters();
         for (int i = 0; i < letters.size(); i++) {
@@ -672,10 +675,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField_Spaces;
     private javax.swing.JTextField jTextField_characters;
+    private javax.swing.JTextField jTextField_lineJump;
+    private javax.swing.JTextField jTextField_tabulators;
     private javax.swing.JTextPane jTextPane_CleanCode;
     private javax.swing.JTextPane jTextPane_comments;
     private javax.swing.JTextPane jTextPane_editor;

@@ -29,12 +29,34 @@ public class LexicalAnalysis {
         }
         return count;
     }
+    
+    // Contar Saltos de Linea
+    public int getTabulatorsCount() {
+        int count = 0;
+        for (int i = 0; i < code.length(); i++) {
+            if (code.charAt(i) == '\t') {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    // Contar Saltos de Linea
+    public int getLineJumpCount() {
+        int count = 0;
+        for (int i = 0; i < code.length(); i++) {
+            if (code.charAt(i) == '\n') {
+                count++;
+            }
+        }
+        return count;
+    }
 
     // Contar Caracteres
     public int getCharactersCount() {
         int count = 0;
         for (int i = 0; i < code.length(); i++) {
-            if (code.charAt(i) != ' ') {
+            if (code.charAt(i) != ' ' && code.charAt(i) != '\n' && code.charAt(i) != '\t') {
                 count++;
             }
         }
@@ -185,14 +207,14 @@ public class LexicalAnalysis {
     // Limpiar el Codigo
     public String getCleanCode() {
         String cleanCode = "";
-        String code_ = cleanComments().replaceAll("\n", "");
-        
+        String code_ = cleanComments().replaceAll("\\R", "");
+
         for (int i = 0; i < code_.length(); i++) {
-            if (code_.charAt(i) != ' ') {
+            if (code_.charAt(i) != ' ' && code_.charAt(i) != '\n' && code_.charAt(i) != '\t') {
                 cleanCode += code_.charAt(i);
             }
         }
 
-        return cleanCode;
+        return cleanCode.replaceAll("\n","");
     }
 }
