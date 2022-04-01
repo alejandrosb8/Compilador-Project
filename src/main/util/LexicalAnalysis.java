@@ -88,6 +88,22 @@ public class LexicalAnalysis {
 
         return operators;
     }
+    
+     // Combobox separadores
+    public ArrayList getDividers() {
+        ArrayList dividers = new ArrayList();
+        String cleanCode = getCleanCode();
+
+        if (SymbolTable.st.isEmpty() == false) {
+            for (int i = 0; i < cleanCode.length(); i++) {
+                if (SymbolTable.st.containsKey(cleanCode.charAt(i)) && SymbolTable.st.get(cleanCode.charAt(i)) == "separador" && dividers.contains(cleanCode.charAt(i)) == false) {
+                    dividers.add(cleanCode.charAt(i));
+                }
+            }
+        }
+
+        return dividers;
+    }
 
     // Combobox caracteres especiales
     public ArrayList getSpecials() {

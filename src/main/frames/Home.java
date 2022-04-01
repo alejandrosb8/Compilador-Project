@@ -484,17 +484,23 @@ public class Home extends javax.swing.JFrame {
         for (int i = 0; i < operators.size(); i++) {
             jComboBox3.addItem(operators.get(i).toString());
         }
-
+        
         jComboBox4.removeAllItems();
-        ArrayList specials = lexicalAnalysis.getSpecials();
-        for (int i = 0; i < specials.size(); i++) {
-            jComboBox4.addItem(specials.get(i).toString());
+        ArrayList dividers = lexicalAnalysis.getDividers();
+        for (int i = 0; i < dividers.size(); i++) {
+            jComboBox4.addItem(dividers.get(i).toString());
         }
 
         jComboBox5.removeAllItems();
+        ArrayList specials = lexicalAnalysis.getSpecials();
+        for (int i = 0; i < specials.size(); i++) {
+            jComboBox5.addItem(specials.get(i).toString());
+        }
+
+        jComboBox6.removeAllItems();
         ArrayList unknows = lexicalAnalysis.getUnknows();
         for (int i = 0; i < unknows.size(); i++) {
-            jComboBox5.addItem(unknows.get(i).toString());
+            jComboBox6.addItem(unknows.get(i).toString());
         }
         // para commit
         jTextPane_CleanCode.setText(lexicalAnalysis.getCleanCode());
