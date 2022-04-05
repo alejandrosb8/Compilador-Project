@@ -27,11 +27,11 @@ public class FileManager {
             JFileChooser file = new JFileChooser(".");
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archiovs TXT", "txt");
             file.setFileFilter(filtro);
-            file.showOpenDialog(home);
+            int resultado = file.showOpenDialog(home);
             File open = file.getSelectedFile();
-
+            
             String text = "", aux;
-            if (open != null) {
+            if (open != null && resultado == 0) {
                 FileReader fr = new FileReader(open);
                 BufferedReader br = new BufferedReader(fr);
                 aux = br.readLine();
